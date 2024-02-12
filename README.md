@@ -21,3 +21,7 @@
     - await page.fill('locator','value')
     - await page.locator('locator').type('value')
     - await page.type('locator','value')
+
+- Locate Multiple Web Elements
+
+  - const elements = await page.$$(locator)
