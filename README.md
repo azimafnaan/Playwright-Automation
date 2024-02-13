@@ -103,3 +103,8 @@
 - Handle Input Box
 
 - Handle Radio Button
+
+- Handle Check Boxes
+
+  - Handle Single Check Box
+  - Handle Multiple Check Boxes
