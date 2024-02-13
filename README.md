@@ -97,3 +97,9 @@
 - List of Elements has given Length
 
   - expect(locator).toHaveCount()
+
+# Interacting with Elements
+
+- Handle Input Box
+
+- Handle Radio Button
