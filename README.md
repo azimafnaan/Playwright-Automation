@@ -55,3 +55,45 @@
 - To Locate an Element based on it's data-testid Attribute (other Attributes can be Configured)
 
   - page.getByTestId()
+
+# Assertions
+
+- Page has URL
+
+  - expect(page).toHaveURL()
+
+- Page has Title
+
+  - expect(page).toHaveTitle()
+
+- Element is Visible
+
+  - expect(locator).toBeVisible()
+
+- Control is Enabled
+
+  - expect(locator).toBeEnabled()
+
+- Radio/Checkbox is checked
+
+  - expect(locator).toBeChecked()
+
+- Element has Attribute
+
+  - expect(locator).toHaveAttribute()
+
+- Element Matches Text
+
+  - expect(locator).toHaveText()
+
+- Element Contains Text
+
+  - expect(locator).toContainText()
+
+- Input has a Value
+
+  - expect(locator).toHaveValue(value)
+
+- List of Elements has given Length
+
+  - expect(locator).toHaveCount()
