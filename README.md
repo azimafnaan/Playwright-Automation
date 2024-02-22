@@ -12,7 +12,8 @@
 
   - Link/Button
 
-    - await page.click('locator')
+    `await page.click('locator')`
+
     - await page.locator('locator').click()
 
   - Input-Box
