@@ -112,3 +112,19 @@
 
   - Handle Single Check Box
   - Handle Multiple Check Boxes
+
+- Handle Dropdown
+
+```
+Multiple Ways to select option from the Dropdown
+  //label/visible text
+  await page.locator("#country").selectOption({ label: 'Japan' })
+  //Visible Text
+  await page.locator("#country").selectOption('Japan');
+  //Value/Keyword
+  await page.locator("#country").selectOption({ value: 'uk' })
+  //Index
+  await page.locator("#country").selectOption({ index: 1 })
+  //byText
+  await page.selectOption("#country", 'Japan')
+```
