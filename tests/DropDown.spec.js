@@ -13,5 +13,14 @@ test("Handle Check Box", async ({ page }) => {
     //await page.locator("#country").selectOption({ index: 1 })
     //byText
     //await page.selectOption("#country", 'Japan')
+
+    //Assertion
+    // 1) Check number of Options in Dropdown => Approach - 1
+    //const options = await page.locator("#country option")
+    //await expect(options).toHaveCount(10);
+    // 2) Check number of Options in Dropdown => Approach - 2
+    const options = await page.$$("#country option")
+    //console.log("Number of Options:", options.length)
+    await expect(options.length).toBe(10)
     await page.waitForTimeout(5000);
 })

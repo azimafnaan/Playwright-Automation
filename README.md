@@ -116,15 +116,34 @@
 - Handle Dropdown
 
 ```
-Multiple Ways to select option from the Dropdown
+  Multiple Ways to select option from the Dropdown
+  ------------------------------------------------------------------
   //label/visible text
   await page.locator("#country").selectOption({ label: 'Japan' })
+  ------------------------------------------------------------------
   //Visible Text
   await page.locator("#country").selectOption('Japan');
+  ------------------------------------------------------------------
   //Value/Keyword
   await page.locator("#country").selectOption({ value: 'uk' })
+  ------------------------------------------------------------------
   //Index
   await page.locator("#country").selectOption({ index: 1 })
+  ------------------------------------------------------------------
   //byText
   await page.selectOption("#country", 'Japan')
+```
+
+```
+  //Assertions in Dropdown
+  ----------------------------------------------------------
+  //1) Check number of Options in Dropdown => Approach - 1
+  const options = await page.locator("#country option")
+  await expect(options).toHaveCount(10);
+  ----------------------------------------------------------
+  //2) Check number of Options in Dropdown => Approach - 2
+  const options = await page.$$("#country option")
+  console.log("Number of Options:", options.length)
+  ----------------------------------------------------------
+  await expect(options.length).toBe(10)
 ```
