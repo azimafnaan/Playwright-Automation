@@ -160,7 +160,8 @@ await page.selectOption("#colors", ['Blue', 'Red', 'Yellow']);
 - Assertions
 ------------------------------------------------------------------
 1) Check Number of Options in Dropdown
-------------------------------------------------------------------     const options = await page.locator("#colors option")
+------------------------------------------------------------------
+  const options = await page.locator("#colors option")
   await expect(options).toHaveCount(5);
 ------------------------------------------------------------------
 2) Check Number of Options in Dropdown using JS Array
