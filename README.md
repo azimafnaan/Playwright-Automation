@@ -118,32 +118,56 @@
 ```
   Multiple Ways to select option from the Dropdown
   ------------------------------------------------------------------
-  //label/visible text
+  - label/visible text
   await page.locator("#country").selectOption({ label: 'Japan' })
   ------------------------------------------------------------------
-  //Visible Text
+  - Visible Text
   await page.locator("#country").selectOption('Japan');
   ------------------------------------------------------------------
-  //Value/Keyword
+  - Value/Keyword
   await page.locator("#country").selectOption({ value: 'uk' })
   ------------------------------------------------------------------
-  //Index
+  - Index
   await page.locator("#country").selectOption({ index: 1 })
   ------------------------------------------------------------------
-  //byText
+  - byText
   await page.selectOption("#country", 'Japan')
 ```
 
 ```
-  //Assertions in Dropdown
+  - Assertions in Dropdown
   ----------------------------------------------------------
-  //1) Check number of Options in Dropdown => Approach - 1
+  1) Check number of Options in Dropdown => Approach - 1
   const options = await page.locator("#country option")
   await expect(options).toHaveCount(10);
   ----------------------------------------------------------
-  //2) Check number of Options in Dropdown => Approach - 2
+  2) Check number of Options in Dropdown => Approach - 2
   const options = await page.$$("#country option")
   console.log("Number of Options:", options.length)
   ----------------------------------------------------------
   await expect(options.length).toBe(10)
+```
+
+- Handle Multi Select Dropdown
+
+```
+- Select Multiple Option from Multi Select Dropdown
+------------------------------------------------------------------
+await page.selectOption("#colors", ['Blue', 'Red', 'Yellow']);
+```
+
+```
+- Assertions
+------------------------------------------------------------------
+1)Check Number of Options in Dropdown
+----------------------------------------------------------
+  const options = await page.locator("#colors option")
+  await expect(options).toHaveCount(5);
+----------------------------------------------------------
+2)Check Number of Options in Dropdown using JS Array
+ ----------------------------------------------------------
+  const options2 = await page.$$("#colors option")
+  console.log("Number of Options:" + options2.length);
+  await expect(options2.length).toBe(5);
+  await page.waitForTimeout(5000);
 ```
