@@ -234,3 +234,30 @@ Approach - 3
   })
   await page.click('button[onclick="myFunctionAlert()"]');
 ```
+
+### Confirmation Dialog-Alert with Ok and Cancel
+
+```
+page.on('dialog', async dialog => {
+  expect(dialog.type()).toContain('confirm');
+  expect(dialog.message()).toContain('Press a button!')
+  await dialog.accept();// close dialog using ok button
+  //await dialog.dismiss();// close dialog using cancel button
+})
+  await page.click('//button[normalize-space()="Confirm Box"]');
+  await expect(page.locator('//p[@id="demo"]')).toHaveText('You pressed OK!')
+```
+
+### Prompt Alert()
+
+```
+page.on('dialog', async dialog => {
+  expect(dialog.type()).toContain('prompt');
+  expect(dialog.message()).toContain('Please enter your name:');
+  expect(dialog.defaultValue()).toContain("Harry Potter");
+  await dialog.accept("Azim Afnaan");// close dialog using ok button
+  //await dialog.dismiss();// close dialog using cancel button
+})
+  await page.click('//button[normalize-space()="Prompt"]');
+  await expect(page.locator('//p[@id="demo"]')).toHaveText('Hello Azim Afnaan! How are you today?')
+```
