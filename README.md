@@ -113,7 +113,7 @@
   - Handle Single Check Box
   - Handle Multiple Check Boxes
 
-- Handle Dropdown
+## Handle Dropdown
 
 ```
   Multiple Ways to select option from the Dropdown
@@ -148,7 +148,7 @@
   await expect(options.length).toBe(10)
 ```
 
-- Handle Multi Select Dropdown
+### Handle Multi Select Dropdown
 
 ```
 - Select Multiple Option from Multi Select Dropdown
@@ -172,7 +172,7 @@ await page.selectOption("#colors", ['Blue', 'Red', 'Yellow']);
   await page.waitForTimeout(5000);
 ```
 
-- Handle Bootstrap Dropdown
+### Handle Bootstrap Dropdown
 
 ```
 Approach - 1
@@ -201,7 +201,7 @@ Approach - 3
     }
 ```
 
-- Handle Auto Suggest Dropdown
+### Handle Auto Suggest Dropdown
 
 ```
   await page.goto("https://www.redbus.in/");
@@ -218,4 +218,19 @@ Approach - 3
           break;
         }
     }
+```
+
+## Handle Dialogs Or Alerts
+
+### Alert() with OK
+
+```
+//Enabling Alert Handling
+//Dialog Window Handler
+  page.on('dialog', async dialog => {
+  expect(dialog.type()).toContain('alert');
+  expect(dialog.message()).toContain('I am an alert box!')
+  await dialog.accept();
+  })
+  await page.click('button[onclick="myFunctionAlert()"]');
 ```
