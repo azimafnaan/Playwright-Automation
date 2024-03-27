@@ -282,3 +282,49 @@ page.on('dialog', async dialog => {
   const inputBox = await page.frameLocator("frame[src='frame_1.html']").locator("[name='mytext1']")
   inputBox.fill("Hello world!");
 ```
+
+## Handle Table
+
+```
+  const table = await page.locator("#productTable");
+  // Total Number of columns
+  const columns = await table.locator('thead tr th');
+  console.log('Number of Columns:', await columns.count());
+  expect(await columns.count()).toBe(4)
+
+  // Total Number of Rows
+  const rows = await table.locator('tbody tr');
+  console.log('Number of Rows:', await rows.count());
+  expect(await rows.count()).toBe(5)
+```
+
+```
+//Select Check Box for Product 4
+    const matchedRow = rows.filter({
+        has: page.locator('td'),
+        hasText: 'Product 4'
+    })
+    matchedRow.locator('input').click();
+    await page.waitForTimeout(5000);
+```
+
+```
+// if created the re-usable function
+//call the function
+await selectProduct(rows, page, 'Product 5');
+await selectProduct(rows, page, 'Product 4');
+await selectProduct(rows, page, 'Product 2');
+
+await page.waitForTimeout(5000);
+```
+
+```
+// This Re-Usable Function is Create outside the 'test'
+async function selectProduct (rows, page, name) {
+    const matchedRow = rows.filter({
+        has: page.locator('td'),
+        hasText: name
+    })
+    matchedRow.locator('input').click();
+}
+```
